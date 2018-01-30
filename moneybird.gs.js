@@ -1,7 +1,7 @@
 function send_Gmail_as_PDF() {
     var GMAIL_LABEL = "#MbReceipt";
     var thread = GmailApp.search("label:" + GMAIL_LABEL);
-    var MONEYBIRD_EMAIL = "xxx@expenses.moneybird.com";
+    var MONEYBIRD_EMAIL = "synappses-a116b238@expenses.moneybird.com";
     var SENT_LABEL = "sentToMoneybird";
     var SUBJECT = "Receipt for processing in Moneybird";
 
@@ -63,6 +63,10 @@ function send_Gmail_as_PDF() {
 
 function send_as_Attchment() {
     var GMAIL_LABEL = "#MbReceiptAttch";
+    var thread = GmailApp.search("label:" + GMAIL_LABEL);
+    var MONEYBIRD_EMAIL = "synappses-a116b238@expenses.moneybird.com";
+    var SENT_LABEL = "sentToMoneybird";
+    var SUBJECT = "Receipt for processing in Moneybird";
     var thread = GmailApp.search("label:" + GMAIL_LABEL);
 
     for (var x = 0; x < thread.length; x++) {
