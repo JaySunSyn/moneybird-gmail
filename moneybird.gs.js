@@ -1,10 +1,14 @@
-function send_Gmail_as_PDF() {
-    var GMAIL_LABEL = "#MbReceipt";
-    var thread = GmailApp.search("label:" + GMAIL_LABEL);
-    var MONEYBIRD_EMAIL = "synappses-a116b238@expenses.moneybird.com";
-    var SENT_LABEL = "sentToMoneybird";
-    var SUBJECT = "Receipt for processing in Moneybird";
+var GMAIL_LABEL = "#MbReceipt";
+var thread = GmailApp.search("label:" + GMAIL_LABEL);
 
+var GMAIL_LABEL_ATTACHMENT = "#MbReceiptAttch";
+var thread_attch = GmailApp.search("label:" + GMAIL_LABEL_ATTACHMENT);
+
+var MONEYBIRD_EMAIL = "synappses-a116b238@expenses.moneybird.com";
+var SENT_LABEL = "sentToMoneybird";
+var SUBJECT = "Receipt for processing in Moneybird";
+
+function send_Gmail_as_PDF() {
     for (var x = 0; x < thread.length; x++) {
         var messages = thread[x].getMessages();
         for (var y = 0; y < messages.length; y++) {
@@ -62,15 +66,8 @@ function send_Gmail_as_PDF() {
 }
 
 function send_as_Attchment() {
-    var GMAIL_LABEL = "#MbReceiptAttch";
-    var thread = GmailApp.search("label:" + GMAIL_LABEL);
-    var MONEYBIRD_EMAIL = "synappses-a116b238@expenses.moneybird.com";
-    var SENT_LABEL = "sentToMoneybird";
-    var SUBJECT = "Receipt for processing in Moneybird";
-    var thread = GmailApp.search("label:" + GMAIL_LABEL);
-
-    for (var x = 0; x < thread.length; x++) {
-        var messages = thread[x].getMessages();
+    for (var x = 0; x < thread_attch.length; x++) {
+        var messages = thread_attch[x].getMessages();
         for (var y = 0; y < messages.length; y++) {
             var attach = messages[y].getAttachments();
             var body = messages[y].getBody();
@@ -89,12 +86,12 @@ function send_as_Attchment() {
         }
     
         // Set new Label as message sent to Moneybird
-        GmailApp.getUserLabelByName(SENT_LABEL).addToThread(thread[x]);
+        GmailApp.getUserLabelByName(SENT_LABEL).addToThread(thread_attch[x]);
         
         // Message Processed; Archive and Remove #Receipt Label
-        GmailApp.moveThreadToArchive(thread[x]);
-        GmailApp.getUserLabelByName(GMAIL_LABEL)
-        .removeFromThread(thread[x]);
+        GmailApp.moveThreadToArchive(thread_attch[x]);
+        GmailApp.getUserLabelByName(GMAIL_LABEL_ATTACHMENT)
+        .removeFromThread(thread_attch[x]);
     
     }
 }
