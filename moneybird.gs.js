@@ -4,7 +4,7 @@ var thread = GmailApp.search("label:" + GMAIL_LABEL);
 var GMAIL_LABEL_ATTACHMENT = "#MbReceiptAttch";
 var thread_attch = GmailApp.search("label:" + GMAIL_LABEL_ATTACHMENT);
 
-var MONEYBIRD_EMAIL = "synappses-a116b238@expenses.moneybird.com";
+var MONEYBIRD_EMAIL = "YOUR_EMAIL@expenses.moneybird.com";
 var SENT_LABEL = "sentToMoneybird";
 var SUBJECT = "Receipt for processing in Moneybird";
 
